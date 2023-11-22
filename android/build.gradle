@@ -1,0 +1,62 @@
+group 'com.pigeon.pig_update'
+version '1.0'
+
+buildscript {
+    repositories {
+//        google()
+//        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven {  allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://packages.aliyun.com/maven/repository/2134531-release-5l43VD' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+//        google()
+//        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven {  allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://packages.aliyun.com/maven/repository/2134531-release-5l43VD' }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 31
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = [
+                    'libs',
+            ]
+        }
+    }
+}
+dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+    implementation 'com.pigeon.utils:zhouliqiang:1.0.0@aar'
+    implementation 'io.github.azhon:appupdate:4.2.8'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+//    implementation(name: 'appupdate', ext: 'aar')
+}
